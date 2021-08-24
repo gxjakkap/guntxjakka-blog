@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Blog - GuntxJakka</title>
+    <link>https://blog.guntxjakka.me/posts/</link>
+    <description>Recent content in Posts on Blog - GuntxJakka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Aug 2021 23:49:51 +0700</lastBuildDate><atom:link href="https://blog.guntxjakka.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน</title>
+      <link>https://blog.guntxjakka.me/posts/io-operation-exposed/</link>
+      <pubDate>Mon, 23 Aug 2021 23:49:51 +0700</pubDate>
+      
+      <guid>https://blog.guntxjakka.me/posts/io-operation-exposed/</guid>
+      <description>บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้
+ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน
+ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ
+กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &amp;ldquo;แกนนำ&amp;rdquo; และ &amp;ldquo;ผู้สนับสนุน&amp;rdquo;</description>
+    </item>
+    
+    <item>
+      <title>ราชวงศ์จักรี สูงดั่งฟ้าจริงหรือ</title>
+      <link>https://blog.guntxjakka.me/posts/is-chakri-dynasty-really-that-honorable/</link>
+      <pubDate>Mon, 23 Aug 2021 23:43:12 +0700</pubDate>
+      
+      <guid>https://blog.guntxjakka.me/posts/is-chakri-dynasty-really-that-honorable/</guid>
+      <description>บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+ราชวงศ์จักรี ปกครองราชอณาจักรไทยมานานกว่า 238 ปี เป็นเวลา 2 ชั่วชีวิตคนที่ราชวงศ์นี้ได้ปกครองสยามประเทศมา
+โดยที่กษัตริย์ทุกพระองค์ที่ขึ้นครองราษฏร์ จะได้รับการยกย่องเชิดชูให้เป็น &amp;ldquo;ผู้อยู่เหนือหัว&amp;rdquo; ของปวงประชาราษฏร์
+แต่เขาอยู่เหนือเราจริงหรือ ? กษัตริย์ไทยถูกวางไว้ในตำแหน่งที่สูง จนทำให้ประชาชนไม่สามารถที่จะวิจารณ์ หรือตั้งข้อสงสัยใดๆทั้งสิ้น
+ทำให้แม้กษัตริย์ไทยทำอะไรไม่ถูกต้อง ก็ไม่ถูกลงโทษใดๆ ทั้งๆที่นิยามของกษัตริย์ไทยก็บอกไว้ว่าท่านอยู่ &amp;ldquo;ภายใต้รัฐธรรมนูญ&amp;rdquo;
+มีข่าวลือ และข้อครหามากมาย ที่ไม่ถูกเปิดเผยเกี่ยวกับกษัตริย์ไทย ทั้งการสวรรคตของกษัตริย์รัชกาลที่ 8 (พระบาทสมเด็จพระปรเมนทรมหาอานันทมหิดล พระอัฐมรามาธิบดินทร) ที่อาจมีส่วนเกี่ยวข้องกับกษัตริย์รัชกาลที่ 9 (พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช) อีกทั้งการสอบสวนคดีดังกล่าว ยังมีสิ่งน่าสงสัยอีกมากมาย ที่ประชาชนอย่างเราๆไม่สามารถจะล่วงรู้ได้
+ซึ่งข้อมูลจากแหล่งต่างๆที่น่าเชื่อถือยังมีจำกัด และผู้ที่เปิดเผย/พยายามข้อมูลเหล่านี้ ก็จะถูกหมายหัวจากทางการไทย และต้องลี้ภัยในที่สุด
+ แต่เรื่องที่กษัตริย์อานันทมหิดลยิงตนเองด้วยความผิดพลาดนั้น ไม่เคยมีความเป็นไปได้แม้แต่น้อย ปืนโค้ลเป็นปืนพกที่ค่อนข้างหนัก น้ำหนักของมันมากกว่า 1 กิโลกรัมเมื่อบรรจุลูกกระสุนเข้าไปอย่างเต็มพิกัด และในการยิงปืนจะต้องออกแรงเพื่อดันเข้าไปอย่างแรงมาก ไม่เพียงแค่ที่ไกปืนเท่านั้น พร้อมกันนั้นจะต้องควบคุมที่แผงความปลอดภัยที่อยู่ด้านหลังของปืน โอกาสที่กษัตริย์อานันทมหิดลจะทรงทำเรื่องนี้โดยอุบัติเหตุ ในขณะที่ปืนกระบอกนี้จี้อยู่ตรงหน้าผากของพระองค์นั้น แทบจะไม่มีความเป็นไปได้เลยทีเดียว นอกจากนั้นยังพบว่าปืนกระบอกนี้ได้ถูกวางอยู่ด้านซ้ายมือข้างๆ ตัวของกษัตริย์อานันทมหิดล แต่พระองค์เป็นผู้ถนัดการใช้มือข้างขวา ดูเหมือนว่า หลักฐานได้ชี้นำว่า กษัตริย์อานันทมหิดลนอนหงายอยู่ในขณะที่ถูกยิง และพระองค์ก็ไม่ได้สวมแว่นตา ซึ่งเมื่อปราศจากแว่นตาแล้ว สายตาของพระองค์จะเห็นภาพอย่างพร่ามัว ซึ่งแทบจะไม่มีความน่าเชื่อถือเลยที่กษัตริย์อานันทมหิดลจะนำเอาปืนโคลท์ .45 ของพระองค์ออกมาเล่น ในขณะที่นอนหงายโดยไม่ได้สวมแว่นตาของพระองค์อีกด้วย
+ ตอนหนึ่งจาก ความลับอันสุดเศร้าของประเทศไทย โดย Andrew Macgregor Marshall เข้าถึงได้ที่นี่</description>
+    </item>
+    
+    <item>
+      <title>My Name</title>
+      <link>https://blog.guntxjakka.me/posts/my-name/</link>
+      <pubDate>Mon, 23 Aug 2021 23:35:27 +0700</pubDate>
+      
+      <guid>https://blog.guntxjakka.me/posts/my-name/</guid>
+      <description>To start off, My nickname in Thai is Gunt (กันต์) which means ว. น่าใคร่ น่าพอใจ งดงาม เช่น กันตาภิรมย์ หมายถึง ยินดียิ่งในสิ่งที่น่าพอใจ. (Adv. Satisfactory, beloved) and the letter “t” at the back is silenced.
+The origin of “GuntxJakka” starts when I need a new Instagram username. And I saw one of my seniors at school use their nickname x 2 first syllables of the real name. So mine would be “GuntxJakka” and I felt like hey, That’s a cool name!</description>
+    </item>
+    
+    <item>
+      <title>Test Post</title>
+      <link>https://blog.guntxjakka.me/posts/test-post/</link>
+      <pubDate>Mon, 23 Aug 2021 23:11:32 +0700</pubDate>
+      
+      <guid>https://blog.guntxjakka.me/posts/test-post/</guid>
+      <description>Welcome to My Blog! Hi, My name is Gunt! Judging from how you find my blog, I suppose you might know me somehow. In this blog, I aim to share as many things I learn as possible. I&amp;rsquo;m not a good writer, but I&amp;rsquo;ll do the best I can!</description>
+    </item>
+    
+  </channel>
+</rss>

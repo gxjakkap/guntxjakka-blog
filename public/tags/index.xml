@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Blog - GuntxJakka</title>
+    <link>https://blog.guntxjakka.me/tags/</link>
+    <description>Recent content in Tags on Blog - GuntxJakka</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://blog.guntxjakka.me/tags/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

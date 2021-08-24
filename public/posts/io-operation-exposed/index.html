@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน",
+  
+  "datePublished": "2021-08-23T23:49:51+07:00",
+  "dateModified": "2021-08-23T23:49:51+07:00",
+  "author": {
+    "@type": "Person",
+    "name": "Jakkaphat Chalermphanaphan",
+    
+    "image": "https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/blog.guntxjakka.me\/posts\/io-operation-exposed\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog - GuntxJakka",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5"
+    }
+    
+  },
+  "description": "บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020\nเมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้\nข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน\nข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ\nกลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น \u0026ldquo;แกนนำ\u0026rdquo; และ \u0026ldquo;ผู้สนับสนุน\u0026rdquo;",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.87.0 with theme Tranquilpeak 0.5.0-BETA">
+<meta name="author" content="Jakkaphat Chalermphanaphan">
+<meta name="keywords" content="">
+<meta name="description" content="บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้
+ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน
+ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ
+กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &ldquo;แกนนำ&rdquo; และ &ldquo;ผู้สนับสนุน&rdquo;">
+
+
+<meta property="og:description" content="บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้
+ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน
+ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ
+กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &ldquo;แกนนำ&rdquo; และ &ldquo;ผู้สนับสนุน&rdquo;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน">
+<meta name="twitter:title" content="โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน">
+<meta property="og:url" content="https://blog.guntxjakka.me/posts/io-operation-exposed/">
+<meta property="twitter:url" content="https://blog.guntxjakka.me/posts/io-operation-exposed/">
+<meta property="og:site_name" content="Blog - GuntxJakka">
+<meta property="og:description" content="บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้
+ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน
+ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ
+กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &ldquo;แกนนำ&rdquo; และ &ldquo;ผู้สนับสนุน&rdquo;">
+<meta name="twitter:description" content="บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020
+เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ @SaraAyanaputra โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้
+ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า Free Messenger ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์ @Ovaltinez ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์ @pittaya ได้ถอด Source code แอปพลิเคชั่น Twitter broadcast ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน
+ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือบริษัท เอส-แพลนเนต จำกัด โดยทราบได้จากข้อมูล whois ของโดเมน mhelpme.com ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย archive.org ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ
+กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &ldquo;แกนนำ&rdquo; และ &ldquo;ผู้สนับสนุน&rdquo;">
+<meta property="og:locale" content="en">
+
+  
+    <meta property="article:published_time" content="2021-08-23T23:49:51">
+  
+  
+    <meta property="article:modified_time" content="2021-08-23T23:49:51">
+  
+  
+  
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@guntxjakka">
+
+
+  <meta name="twitter:creator" content="@guntxjakka">
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5?s=640">
+
+
+
+
+
+
+    <title>โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน</title>
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://blog.guntxjakka.me/posts/io-operation-exposed/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://blog.guntxjakka.me/css/style-x4v5aep1xln8tw4u8b4utrzzm45rcnnq6emr4myqn5eka2yri56y1t7q.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/" aria-label="">Blog - GuntxJakka</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about" aria-label="">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5?s=90" alt="" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about" aria-label="">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5?s=110" alt="" />
+        </a>
+        <h4 class="sidebar-profile-name">Jakkaphat Chalermphanaphan</h4>
+        
+          <h5 class="sidebar-profile-bio">A lost student interested in coding, photographing and video editing.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/gxjakkap" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://twitter.com/guntxjakka" target="_blank" rel="noopener" title="Twitter">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-twitter" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Twitter</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://instagram.com/guntxjakka" target="_blank" rel="noopener" title="Instagram">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-instagram" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.guntxjakka.me" target="_blank" rel="noopener" title="Website">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-globe-asia" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      โป๊ะแตก! ขบวนการ IO โดยกองทัพ โครงการดีจากภาษีประชาชน
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2021-08-23T23:49:51&#43;07:00">
+        
+   23, 2021
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>บทความนี้ถูกเขียนขึ้นเมื่อวันที่ 18 สิงหาคม 2020</p>
+<p>เมื่อวันที่ 25 พฤศจิกายนที่ผ่านมา ผู้ใช้ทิวตเตอร์ <a href="https://twitter.com/SaraAyanaputra/status/1331455485401153539">@SaraAyanaputra</a> โพสข้อความพร้อมรูปภาพสไลด์โครงการ IO ของกองทัพ โดยมีใจความดังนี้</p>
+<p><img src="https://i.ibb.co/QvTtgt6/Enp-Onb-Vo-AAu-STc.png" alt="enter image description here"></p>
+<p><img src="https://i.ibb.co/s6xCCwM/Enp-Onqe-VEAIyzq-T.png" alt="enter image description here"></p>
+<p>ข้อมูลที่หลุดออกมาแสดงให้เห็นว่า ขบวนการ IO มีบัญชีผู้ใช้ทวิตเตอร์มากกว่าหลักหมื่นบัญชี และใช้แอปพลิเคชั่นเฉพาะในการสั่งงาน โดยแอปพลิเคชั่นที่ใช้ในการส่งข้อความมีชื่อว่า  <a href="https://apkcombo.com/free-messenger/com.free.messengers/">Free Messenger</a>  ซึ่งพัฒนาโดย Developer นามว่า win.vong นอกจากนี้เมื่อผู้ใช้ทวิตเตอร์  <a href="https://twitter.com/Ovaltinez/status/1331515800524529666">@Ovaltinez</a>  ทำการถอด Source code ของแอปพลิเคชั่นดังกล่าวพบว่า มี assets ต่างๆที่ใช้ cdn จากโดเมน mhelpme.com ซึ่งตรงกับที่ผู้ใช้ทวิตเตอร์  <a href="https://twitter.com/pittaya/status/1331501696304906242">@pittaya</a>  ได้ถอด Source code แอปพลิเคชั่น  <a href="https://apkcombo.com/twitter-broadcast/com.wimvong.broadcast/">Twitter broadcast</a>  ออกมาได้ผลลัพธ์ที่คล้ายคลึงกัน</p>
+<p>ข้อมูลจากทั้ง 2 ท่านทำให้ทราบว่า บริษัทที่รับทำงานให้กับกองทัพในครั้งนี้ คือ<a href="https://datawarehouse.dbd.go.th/company/profile/5/0105551043907">บริษัท เอส-แพลนเนต จำกัด</a>  โดยทราบได้จากข้อมูล whois ของโดเมน  <a href="https://who.is/whois/mhelpme.com">mhelpme.com</a> ซึ่งแม้ในปัจจุบัน เว็บไซต์ s-planet.co.th จะไม่สามารถเข้าถึงได้ แต่จากข้อมูลที่ถูกเก็บไว้โดย  <a href="http://web.archive.org/web/20200924124936/http://s-planet.co.th/">archive.org</a> ก็มีข้อมูลที่อยู่ อีเมลติดต่อ เป็นไปในทางเดียวกัน แล้วยังทำให้ทราบว่า บริษัทนี้มีลูกค้าส่วนใหญ่เป็นหน่วยงานของรัฐ</p>
+<p><img src="https://i.ibb.co/HYqhZmw/Enqocdj-Vk-AIt-TV3.jpg" alt="enter image description here"></p>
+<p>กลับมาที่สไลด์โครงการ จะเห็นได้ชัดว่า โครงการนี้ มีการจัดการที่เป็นระบบ แบ่งการทำงานเป็น &ldquo;แกนนำ&rdquo; และ &ldquo;ผู้สนับสนุน&rdquo;</p>
+<p><img src="https://i.ibb.co/y5CDvkQ/Enp-Oo1-Vk-AQDjq-K.jpg" alt="enter image description here"></p>
+<p>และมีการใช้แอปพลิเคชั่น Twitter Broadcast ในการโพสข้อความทีละหลายๆบัญชีพร้อมๆกัน ซึ่งเห็นได้ชัดว่า เป็นการสิ้นเปลืองงบประมาณโดยไม่จำเป็นในการจ้างบริษัทเอกชนพัฒนาแอปพลิเคชั่นเพื่อโครงการนี้โดยเฉพาะ ซ้ำยังสร้างความเข้าใจผิดในสังคม จึงเกิดการตั้งคำถามว่า การนำงบประมาณมาเพื่อใช้ในการปล่อยข่าวสร้างภาพลักษณ์ให้กับครอบครัวๆเดียวนั้น เหมาะสมแล้วหรือไม่ และเป็นอีกเหตุผลที่ประเทศไทยควรมีการปฏิรูปกองทัพให้โปร่งใส และทำงานรับใช้ประชาชนจริงๆ มิใช่ทำงานเพื่อตั้งตนเป็นปฏิปักษ์กับประชาชน</p>
+<p>อ้างอิง</p>
+<p>blognone.com:  <a href="https://www.blognone.com/node/119789">เอกสารหลุดแสดงกองทัพใช้แอป Twitter Broadcast ประสานงานโพสทวิตเตอร์ ล่าสุดผู้พัฒนาลบแอปไปแล้ว</a></p>
+<p>twitter.com:  <a href="https://twitter.com/SaraAyanaputra/status/1331455485401153539">@SaraAyanaputra</a></p>
+<p>twitter.com: @<a href="https://twitter.com/pittaya/status/1331501696304906242">pittaya</a></p>
+<p>twitter.com: @<a href="https://twitter.com/Ovaltinez/status/1331515800524529666">Ovaltinez</a></p>
+
+              
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/posts/is-chakri-dynasty-really-that-honorable/" data-tooltip="ราชวงศ์จักรี สูงดั่งฟ้าจริงหรือ" aria-label=": ราชวงศ์จักรี สูงดั่งฟ้าจริงหรือ">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.guntxjakka.me/posts/io-operation-exposed/" title=" Facebook" aria-label=" Facebook">
+              <i class="fab fa-facebook-square" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://blog.guntxjakka.me/posts/io-operation-exposed/" title=" Twitter" aria-label=" Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 <a href="https://guntxjakka.me">GuntxJakka</a>. 
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml"></span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/posts/is-chakri-dynasty-really-that-honorable/" data-tooltip="ราชวงศ์จักรี สูงดั่งฟ้าจริงหรือ" aria-label=": ราชวงศ์จักรี สูงดั่งฟ้าจริงหรือ">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr"></span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.guntxjakka.me/posts/io-operation-exposed/" title=" Facebook" aria-label=" Facebook">
+              <i class="fab fa-facebook-square" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://blog.guntxjakka.me/posts/io-operation-exposed/" title=" Twitter" aria-label=" Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#" aria-label="">
+        
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblog.guntxjakka.me%2Fposts%2Fio-operation-exposed%2F" aria-label=" Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>%!(EXTRA string=Facebook)</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fblog.guntxjakka.me%2Fposts%2Fio-operation-exposed%2F" aria-label=" Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>%!(EXTRA string=Twitter)</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/5516ecd05f3e1ccaeb5138a3b3b491a5?s=110" alt="" />
+    
+    <h4 id="about-card-name">Jakkaphat Chalermphanaphan</h4>
+    
+      <div id="about-card-bio">A lost student interested in coding, photographing and video editing.</div>
+    
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Hat Yai, Thailand
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://blog.guntxjakka.me/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://blog.guntxjakka.me/js/script-8lglxdix2nqhalxxm2bujhkcc8cctdrd5o5axonwhfzx2zqrer5facyn8.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
